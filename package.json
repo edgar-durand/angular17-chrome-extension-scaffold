@@ -4,11 +4,16 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "rimraf extension && mkdirp extension && ng build && npm run copy:build && npm run pack",
+    "copy:build": "cp -rf src/assets ./extension && cp -f manifest.json ./extension/manifest.json && cp -f interceptRule.json ./extension/interceptRule.json && cp -f service-worker.js ./extension/service-worker.js && cp -f dist/tm/browser/main*.js ./extension/main.js && cp -f dist/tm/browser/polyfills*.js ./extension/polyfills.js && cp -f dist/tm/browser/styles*.css ./extension/styles.css",
+    "pack": "cd extension && bestzip ../NEW-TM-1.0.0.zip *",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
+  "engines": {
+    "node": "20.9.0"
+  },
   "dependencies": {
     "@angular/animations": "^17.3.0",
     "@angular/common": "^17.3.0",
@@ -26,13 +31,8 @@
     "@angular-devkit/build-angular": "^17.3.5",
     "@angular/cli": "^17.3.5",
     "@angular/compiler-cli": "^17.3.0",
-    "@types/jasmine": "~5.1.0",
-    "jasmine-core": "~5.1.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "bestzip": "^2.2.1",
+    "rimraf": "^5.0.5",
     "typescript": "~5.4.2"
   }
 }

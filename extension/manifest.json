@@ -1,0 +1,70 @@
+{
+  "name": "New Ticketmaster",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "key": "ghbambbjodcefhffjpplghanclnlppoa",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "tabGroups",
+    "storage",
+    "identity",
+    "background",
+    "management",
+    "webNavigation",
+    "webRequest",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "scripting"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "interceptRule",
+      "enabled": true,
+      "path": "interceptRule.json"
+    }]
+  },
+  "host_permissions": [
+    "https://www.ticketmaster.com/*",
+    "https://auth.ticketmaster.com/*",
+    "https://checkout.ticketmaster.com/*",
+    "https://queue.ticketmaster.com/*",
+    "https://concerts.livenation.com/*"
+  ],
+  "externally_connectable": {
+    "ids": ["ghbambbjodcefhffjpplghanclnlppoa"]
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "icons": {
+    "16": "assets/icons/128.png",
+    "48": "assets/icons/128.png",
+    "128": "assets/icons/128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": [
+        "https://www.ticketmaster.com/*",
+        "https://auth.ticketmaster.com/*",
+        "https://checkout.ticketmaster.com/*",
+        "https://queue.ticketmaster.com/*",
+        "https://concerts.livenation.com/*"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.ticketmaster.com/*",
+        "https://auth.ticketmaster.com/*",
+        "https://checkout.ticketmaster.com/*",
+        "https://queue.ticketmaster.com/*",
+        "https://concerts.livenation.com/*"
+      ],
+      "js": ["polyfills.js", "main.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "New Angular Extension Scaffold",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "key": "ghbambbjodcefhffjpplghanclnlppoa",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "tabGroups",
+    "storage",
+    "identity",
+    "background",
+    "management",
+    "webNavigation",
+    "webRequest",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "scripting"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "interceptRule",
+      "enabled": true,
+      "path": "interceptRule.json"
+    }]
+  },
+  "host_permissions": ["*"],
+  "externally_connectable": {
+    "ids": ["ghbambbjodcefhffjpplghanclnlppoa"]
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "icons": {
+    "16": "assets/icons/128.png",
+    "48": "assets/icons/128.png",
+    "128": "assets/icons/128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["*"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*"],
+      "js": ["polyfills.js", "main.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}

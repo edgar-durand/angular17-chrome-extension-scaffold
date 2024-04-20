@@ -1,0 +1,18 @@
+[
+  {
+    "id" : 1,
+    "priority": 1,
+    "action" : { "type" : "block" },
+    "condition" : {
+      "urlFilter" : "https://www.google-analytics.com/j/collect?*"
+    }
+  },
+  {
+    "id" : 2,
+    "priority": 1,
+    "action" : { "type" : "block" },
+    "condition" : {
+      "urlFilter" : "https://geolocation.onetrust.com/cookieconsentpub/v1/geo/*"
+    }
+  }
+]
